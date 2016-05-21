@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var request = require('request');
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res) {
@@ -11,11 +14,20 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	if(req.entry) {
-		console.log('There is some stuff in here');
+	if(req.body) {
+		console.log('There is some stuff in here ' + req.body);
 	}else{
 		console.log('Something went wrong')
 	}
+	request.post(
+	    'http://www.yoursite.com/formpage',
+	    { form: { key: 'value' } },
+	    function (error, response, body) {
+	        if (!error && response.statusCode == 200) {
+	            console.log(body)
+	        }
+	    }
+	);
 })
 
 module.exports = router;
