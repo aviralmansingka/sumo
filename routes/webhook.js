@@ -14,13 +14,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	if(req.body) {
-		console.log('There is some stuff in here ' + JSON.parse(req.body));
-		res.send(req.body);
-	}else{
-		console.log('Something went wrong');
-		res.send(req.body);
-	}
+	console.log('YOYOYO');
 	res.end();
 })
 
