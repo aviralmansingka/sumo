@@ -13,6 +13,8 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 	if(req.entry) {
 		console.log('There is some stuff in here');
+	}else{
+		console.log('Something went wrong')
 	}
 })
 
