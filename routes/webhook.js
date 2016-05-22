@@ -14,10 +14,13 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
 	console.log('YOYOYO')
-	var data = req.body.entry[0].messaging[0];
-	console.log(data);
-
-
+	//var data = req.body.entry[0].messaging[0];
+	//console.log(data);
+	var sender_id = req.body.entry[0].messaging[0].sender.id;
+	var text = (req.body.entry[0].messaging[0].message.text);
+	console.log(text);
+	console.log(sender_id);
+	
 	res.end();
 });
 
