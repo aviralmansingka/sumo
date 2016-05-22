@@ -6,7 +6,7 @@ var request = require('request');
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-  if (req.query['hub.verify_token'] === 'EAAQoyn1s0fMBAGjI17aXtHKPD4QGFfDk0wNstXCFNfHJkaDIQvdQHVJcZBZCfBOhcJjttZBYQVPeDyFZAHr8gDj3ria7iPncJb8wAMARhl0JWiynTXmtKRv5jw8qw54DXCmMuITUMPdmlhlyP8pqgLNLlaTBNubNzGzFn48ZAtAZDZD') {
+  if (req.query['hub.verify_token'] === 'aviral_is_god') {
     res.send(req.query['hub.challenge']);
   } else {
     res.send('Error, wrong validation token');    
