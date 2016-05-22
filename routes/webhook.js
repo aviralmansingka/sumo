@@ -9,23 +9,23 @@ router.get('/', function (req, res) {
 })
 // to post data
 router.post('/', function (req, res) {
-    messaging_events = req.body.entry[0].messaging
+    messaging_events = req.body.entry[0].messaging;
     for (i = 0; i < messaging_events.length; i++) {
-        event = req.body.entry[0].messaging[i]
-        sender = event.sender.id
+        event = req.body.entry[0].messaging[i];
+        sender = event.sender.id;
         if (event.message && event.message.text) {
             // safe to get text and send to wit.ai
-            text = event.message.text
+            text = event.message.text;
             if (text === 'Generic') {
-                sendGenericMessage(sender)
-                continue
+                sendGenericMessage(sender);
+                continue;
             }
-            sendTextMessage(sender,text.substring(0, 200))
+            sendTextMessage(sender, text.substring(0, 200));
         }
         if (event.postback) {
-            text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
-            continue
+            text = JSON.stringify(event.postback);
+            sendTextMessage(sender, "Postback received: " + text.substring(0, 200), token);
+            continue;
         }
     }
     res.status(200).send();
@@ -34,14 +34,14 @@ router.post('/', function (req, res) {
 var token = 'EAAQoyn1s0fMBAKJZB9jJSLpfAEpuIIMPVwO3pwKwxcIjHrfvPYbJZB6ybu8FBx5aZCJcgiRp7srUsfxoaz58RuFAu8I3s1RcSwZCeaTHRdZBItg0AJZAyaxqZBZADqZAC6UZBSwMGWnhky5i3o54uMMlxPbQ5ZASKUhLYwffCpx1SrZAhAZDZD';
 function sendTextMessage(sender, text) {
     messageData = {
-        text:text
-    }
+        text: text
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
+        qs: {access_token: token},
         method: 'POST',
         json: {
-            recipient: {id:sender},
+            recipient: {id: sender},
             message: messageData,
         }
     }, function(error, response, body) {
