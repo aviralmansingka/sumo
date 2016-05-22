@@ -1,3 +1,4 @@
+var request = require('request');
 module.exports = function(text) {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
