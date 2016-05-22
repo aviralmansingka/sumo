@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var webhook = require('./routes/webhook');
-var news = require('./routes/content.js');
+var news = require('./routes/content');
+var summary = require('./routes/summarizer');
 
 
 var app = express();
@@ -28,6 +29,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/webhook', webhook);
 app.use('/news', news);
+app.use('/summary', summary);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
