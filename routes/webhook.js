@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var page_token = 'EAAQoyn1s0fMBAGjI17aXtHKPD4QGFfDk0wNstXCFNfHJkaDIQvdQHVJcZBZCfBOhcJjttZBYQVPeDyFZAHr8gDj3ria7iPncJb8wAMARhl0JWiynTXmtKRv5jw8qw54DXCmMuITUMPdmlhlyP8pqgLNLlaTBNubNzGzFn48ZAtAZDZD';
+
 
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-  if (req.query['hub.verify_token'] === page_token) {
+  if (req.query['hub.verify_token'] === 'EAAQoyn1s0fMBAGjI17aXtHKPD4QGFfDk0wNstXCFNfHJkaDIQvdQHVJcZBZCfBOhcJjttZBYQVPeDyFZAHr8gDj3ria7iPncJb8wAMARhl0JWiynTXmtKRv5jw8qw54DXCmMuITUMPdmlhlyP8pqgLNLlaTBNubNzGzFn48ZAtAZDZD') {
     res.send(req.query['hub.challenge']);
   } else {
     res.send('Error, wrong validation token');    
@@ -14,20 +14,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	//var sender_id = req.body.entry[0].messaging[0].sender.id;
-	// Send the text to wit.ai for processing
-
-	// if the intent == get_news
-
-	// then call our library to scrape news articles and return them as an array
-
-	// foreach element in the array
-	//     get summary
+	var user_id = req.body.entry[0].messaging[0].sender.id;
 	console.log(req.body.entry[0].messaging[0].message.text);
 	res.end();
-});
+})
 
-//kaggle.com
-
-//sykidlearn
 module.exports = router;
