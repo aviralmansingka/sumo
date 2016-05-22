@@ -10,8 +10,9 @@ module.exports = function(text) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }else {
-        	if(body.outcomes[0]) {
-        		console.log(body.outcomes[0].intent)
+        	var body1 = JSON.parse(body);
+        	if(body1.outcomes[0]) {
+        		console.log(body1.outcomes[0].intent)
         	} else {
         		console.log('outcomes[0] does not exist')
         	}
