@@ -14,10 +14,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	//var user_id = req.body.entry[0].messaging[0].sender.id;
-	
+	console.log('YOYOYO');
 	console.log(req.body.entry[0].messaging[0].message.text);
-	res.status(200).send();
+	res.end();
 })
 
 module.exports = router;
