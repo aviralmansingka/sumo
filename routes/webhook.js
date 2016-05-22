@@ -20,8 +20,25 @@ router.post('/', function(req, res) {
 	var text = (req.body.entry[0].messaging[0].message.text);
 	console.log(text);
 	console.log(sender_id);
-	
-	res.end();
+	var url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAQoyn1s0fMBAKJZB9jJSLpfAEpuIIMPVwO3pwKwxcIjHrfvPYbJZB6ybu8FBx5aZCJcgiRp7srUsfxoaz58RuFAu8I3s1RcSwZCeaTHRdZBItg0AJZAyaxqZBZADqZAC6UZBSwMGWnhky5i3o54uMMlxPbQ5ZASKUhLYwffCpx1SrZAhAZDZD';
+	console.log(url);
+	var request  = require('request');
+	request.post(url,
+		{
+			form : {
+				recipient : {
+					id : sender_id
+				},
+				message : {
+					text : text
+				}
+			}
+		}, function (error, response, body) {
+				response.end();
+				res.end();
+		});
+
+	//res.end();
 });
 
 module.exports = router;
