@@ -44,7 +44,7 @@ app.post('/webhook', function (req, res) {
             continue
         }
     }
-    res.sendStatus(200)
+    res.status(200).send();
 })
 
 var token = 'EAAQoyn1s0fMBAKJZB9jJSLpfAEpuIIMPVwO3pwKwxcIjHrfvPYbJZB6ybu8FBx5aZCJcgiRp7srUsfxoaz58RuFAu8I3s1RcSwZCeaTHRdZBItg0AJZAyaxqZBZADqZAC6UZBSwMGWnhky5i3o54uMMlxPbQ5ZASKUhLYwffCpx1SrZAhAZDZD';
