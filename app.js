@@ -2,6 +2,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
+var webhook = require('./webhook.js')
 
 
 // parse application/x-www-form-urlencoded
@@ -24,13 +25,13 @@ app.get('/webhook/', function (req, res) {
 })
 
 // to post data
-app.post('/webhook', function (req, res) {
-    console.log('Yo');
+app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
         event = req.body.entry[0].messaging[i]
         sender = event.sender.id
         if (event.message && event.message.text) {
+            // safe to get text and send to wit.ai
             text = event.message.text
             if (text === 'Generic') {
                 sendGenericMessage(sender)
