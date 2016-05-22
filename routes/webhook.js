@@ -20,7 +20,25 @@ router.post('/', function(req, res) {
 	console.log(sender_id);
 	var url = "https://graph.facebook.com/v2.6/me/messages?access_token="+page_token;
 	console.log(page_token);
-	
+	request.post(
+	    url,
+	    { 
+	    	form: { 
+	    		recipient: {
+	    			id : sender_id
+	    		},
+	    		message: {
+	    			text: text
+	    		}  
+	    	} 
+		},
+	    function (error, response, body) {
+	        if (!error && response.statusCode == 200) {
+	            console.log(body)
+	            res.end();
+	        }
+	    }
+	);
 	
 })
 
