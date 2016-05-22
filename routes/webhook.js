@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
 	console.log(text);
 	console.log(sender_id);
 	
-	//res.end();
+	res.end();
 });
 
 module.exports = router;
