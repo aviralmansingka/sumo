@@ -1,15 +1,20 @@
-var $ = require('jquery');
+var request = require('request');
 module.exports = function(text) {
-    $.ajax({
-	  url: 'https://api.wit.ai/message',
-	  data: {
-	    'q': 'set an alarm in 10min',
-	    'access_token' : 'MY_WIT_TOKEN'
-	  },
-	  dataType: 'jsonp',
-	  method: 'GET',
-	  success: function(response) {
-	      console.log("success!", response);
-	  }
-	});
+    request({
+        url: 'https://api.wit.ai/message',
+        method: 'GET',
+        json: {
+            q : text,
+            access_token: 'S3X5IJC2Q5VC45Q6XFK326COB5673RLN'
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }else {
+        	console.log(body)
+        }
+        return body;
+    })
 }
