@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
 	console.log(text);
 	console.log(sender_id);
 	var access_token = 'EAAQoyn1s0fMBAJ1fAK0gcEfX7KFUYBgfH2MysVd80NVXNoGVjhCMa8k4t6TEGhFDT68S1yksllZBDqY2yAPgpMMR7T8JM0DjwYrLPc5QWAKLxD7HFyticryfwC58GysoKZBwMl0T26BiZBZByRG9pHGSVZACPJR7ZCKWpndAL5bwZDZD';
-	var url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + url;
+	var url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + access_token;
 	var request = require('request');
 	request.post(
     	url,
