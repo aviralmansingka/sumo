@@ -10,10 +10,10 @@ module.exports = function(text) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }else {
-        	for(var i=0; i < body.outcomes.length; i++ ) {
-        		if(body.outcomes[i].intent === "get_news") {
-        			console.log("We're in business Chandu")
-        		}
+        	if(body.outcomes[0]) {
+        		console.log(body.outcomes[0].intent)
+        	} else {
+        		console.log('outcomes[0] does not exist')
         	}
         }
     })
