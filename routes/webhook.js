@@ -25,7 +25,6 @@ router.post('/', function(req, res) {
 	// foreach element in the array
 	//     get summary
 	console.log(text);
-	
 })
 
 //kaggle.com
