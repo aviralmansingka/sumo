@@ -15,6 +15,9 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
 	console.log('YOYOYO');
+	console.log(req.body.entry[0]);
+	console.log(req.body.entry[0].messaging[0]);
+	console.log(req.body.entry[0].messaging[0].message);
 	console.log(req.body.entry[0].messaging[0].message.text);
 	console.log('aviral')
 	res.end();
