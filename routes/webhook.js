@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	// console.log('YOYOYO')
+	console.log('YOYOYO')
 	var sender_id = req.body.entry[0].messaging[0].sender.id;
 	var text = (req.body.entry[0].messaging[0].message.text);
 	console.log(text);
