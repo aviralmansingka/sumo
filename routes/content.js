@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 
 /* GET news content */
-router.get('/', function(req, res) {
+router.get('/nyt', function(req, res) {
     request.get({
         url: "https://api.nytimes.com/svc/topstories/v2/home.json",
         qs: {
@@ -11,8 +11,14 @@ router.get('/', function(req, res) {
         },
     }, function(err, response, body) {
         body = JSON.parse(body);
-        res.json(body);
+        res.json(body.results);
     });
 });
+
+router.get('/guardian', function(req, res) {
+    request.get({
+        
+    })
+})
 
 module.exports = router;
