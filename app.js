@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 
 // for facebook verification
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'same_as_me') {
+    if (req.query['hub.verify_token'] === 'aviral_is_god') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
@@ -47,8 +47,7 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200)
 })
 
-var token = "CAAOmSYTIk3sBAIUe4pvYtRQle3u8xrbz4G1jmSGonRLNO4kdPLfZBZCngH8UOiThSNdyuU9OIOnU3VOyBQv1GOmAXlJZAqmJO29yrBZAZC5djsPUAmtGo9drFitB85rpvaLZCJCIiS5ke3hIzK0NZB4ZARzOj8uqLWJvrrjF5FHqmEC4Af389RVRfpnaTSnOS4gZD"
-
+var token = 'EAAQoyn1s0fMBAKJZB9jJSLpfAEpuIIMPVwO3pwKwxcIjHrfvPYbJZB6ybu8FBx5aZCJcgiRp7srUsfxoaz58RuFAu8I3s1RcSwZCeaTHRdZBItg0AJZAyaxqZBZADqZAC6UZBSwMGWnhky5i3o54uMMlxPbQ5ZASKUhLYwffCpx1SrZAhAZDZD';
 function sendTextMessage(sender, text) {
     messageData = {
         text:text
