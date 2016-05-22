@@ -2,7 +2,7 @@ var request = require('request');
 module.exports = function(text) {
     request({
         url: 'https://api.wit.ai/message',
-        qs: {access_token:'BRWV5Z7ZQSEQZ4CTDSJ2HSFN5X6UCYSA'},
+        qs: {access_token:'BRWV5Z7ZQSEQZ4CTDSJ2HSFN5X6UCYSA', q:text},
         method: 'GET'
     }, function(error, response, body) {
         if (error) {
