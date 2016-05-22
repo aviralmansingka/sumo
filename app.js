@@ -3,7 +3,6 @@ var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
 
-app.set('port', (process.env.PORT || 5000))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
@@ -119,6 +118,6 @@ function sendGenericMessage(sender) {
 }
 
 // spin spin sugar
-app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
+app.listen((process.env.PORT || 5000), function() {
+    console.log('running on port', (process.env.PORT || 5000))
 })
