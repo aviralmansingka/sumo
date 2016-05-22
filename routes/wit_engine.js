@@ -2,7 +2,7 @@ var request = require('request');
 module.exports = function(text) {
     request({
         url: 'https://api.wit.ai/message',
-        qs: {access_token:'BRWV5Z7ZQSEQZ4CTDSJ2HSFN5X6UCYSA', q:text},
+        qs: {access_token:'BRWV5Z7ZQSEQZ4CTDSJ2HSFN5X6UCYSA', q:},
         method: 'GET'
     }, function(error, response, body) {
         if (error) {
@@ -10,7 +10,11 @@ module.exports = function(text) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }else {
-        	console.log(body)
+        	for(var i=0; i < body.outcomes.length; i++ ) {
+        		if(body.outcomes[i].intent === "get_news") {
+        			console.log("We're in business Chandu")
+        		}
+        	}
         }
     })
 }
