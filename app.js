@@ -34,7 +34,7 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
             // safe to get text and
             text = event.message.text
-            parseText(text);
+            wit(text)
             
         }
     }
