@@ -15,5 +15,6 @@ module.exports = function(text) {
         }else {
         	console.log(body)
         }
+        return body;
     })
 }

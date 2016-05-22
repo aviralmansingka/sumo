@@ -34,7 +34,8 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
             // safe to get text and
             text = event.message.text
-            wit(text)
+            var obj = wit(text)
+            sendTextMessage(sender, text)
             
         }
     }
