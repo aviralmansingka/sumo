@@ -24,11 +24,11 @@ router.post('/', function(req, res) {
 
 	// foreach element in the array
 	//     get summary
-
+	console.log(text);
 	var request = require('request');
-
+	var url = "https://graph.facebook.com/v2.6/me/messages?access_token="+page_token
 	request.post(
-	    "https://graph.facebook.com/v2.6/me/messages?access_token="+page_token,
+	    url,
 	    { form: 
 	    	{ recipient: {
 	    		id: sender_id
@@ -44,7 +44,7 @@ router.post('/', function(req, res) {
 	        }
 	    }
 	);
-	
+
 
 	res.end();
 })
