@@ -2,7 +2,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 var app = express()
-var webhook = require('./webhook.js')
+var webhook = require('./routes/webhook.js')
 
 
 // parse application/x-www-form-urlencoded
