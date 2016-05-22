@@ -1,18 +1,31 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var bodyParser = require('body-parser')
+var request = require('request')
+var app = express()
 
+app.set('port', (process.env.PORT || 5000))
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
 
-/* GET users listing. */
-router.get('/', function(req, res) {
-  if (req.query['hub.verify_token'] === 'aviral_is_god') {
-    res.send(req.query['hub.challenge']);
-  } else {
-    res.send('Error, wrong validation token');    
-  }
-});
+// parse application/json
+app.use(bodyParser.json())
+
+// index
+app.get('/', function (req, res) {
+	res.send('hello world i am a secret bot')
+})
+
+// for facebook verification
+app.get('/webhook/', function (req, res) {
+	if (req.query['hub.verify_token'] === 'same_as_me') {
+		res.send(req.query['hub.challenge'])
+	}
+	res.send('Error, wrong token')
+})
+
 // to post data
-router.post('/', function (req, res) {
+app.post('/webhook/', function (req, res) {
 	messaging_events = req.body.entry[0].messaging
 	for (i = 0; i < messaging_events.length; i++) {
 		event = req.body.entry[0].messaging[i]
@@ -34,7 +47,8 @@ router.post('/', function (req, res) {
 	res.sendStatus(200)
 })
 
-var token = 'EAAQoyn1s0fMBAKJZB9jJSLpfAEpuIIMPVwO3pwKwxcIjHrfvPYbJZB6ybu8FBx5aZCJcgiRp7srUsfxoaz58RuFAu8I3s1RcSwZCeaTHRdZBItg0AJZAyaxqZBZADqZAC6UZBSwMGWnhky5i3o54uMMlxPbQ5ZASKUhLYwffCpx1SrZAhAZDZD';
+var token = "CAAOmSYTIk3sBAIUe4pvYtRQle3u8xrbz4G1jmSGonRLNO4kdPLfZBZCngH8UOiThSNdyuU9OIOnU3VOyBQv1GOmAXlJZAqmJO29yrBZAZC5djsPUAmtGo9drFitB85rpvaLZCJCIiS5ke3hIzK0NZB4ZARzOj8uqLWJvrrjF5FHqmEC4Af389RVRfpnaTSnOS4gZD"
+
 function sendTextMessage(sender, text) {
 	messageData = {
 		text:text
@@ -105,4 +119,7 @@ function sendGenericMessage(sender) {
 	})
 }
 
-module.exports = router;
+// spin spin sugar
+app.listen(app.get('port'), function() {
+	console.log('running on port', app.get('port'))
+})
