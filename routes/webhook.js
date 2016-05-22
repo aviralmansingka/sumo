@@ -22,7 +22,7 @@ router.post('/', function(req, res) {
 
 	//var url = "https://graph.facebook.com/v2.6/me/messages?access_token="+page_token;
 	//console.log(page_token);
-	
+	res.end();
 	
 })
 
