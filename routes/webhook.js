@@ -14,11 +14,23 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	//console.log('YOYOYO')
+	// console.log('YOYOYO')
 	var sender_id = req.body.entry[0].messaging[0].sender.id;
 	var text = (req.body.entry[0].messaging[0].message.text);
 	console.log(text);
 	console.log(sender_id);
+	var access_token = 'EAAQoyn1s0fMBAJ1fAK0gcEfX7KFUYBgfH2MysVd80NVXNoGVjhCMa8k4t6TEGhFDT68S1yksllZBDqY2yAPgpMMR7T8JM0DjwYrLPc5QWAKLxD7HFyticryfwC58GysoKZBwMl0T26BiZBZByRG9pHGSVZACPJR7ZCKWpndAL5bwZDZD';
+	var url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + url;
+	request.post( 'http://www.yoursite.com/formpage', { 
+		form: { 
+    		recipient: {
+    			id : sender_id
+    		}
+   			message: {
+   				text : text
+   			}
+   		} 
+    });
 	res.end();
 })
 
