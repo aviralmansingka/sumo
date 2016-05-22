@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	var sender_id = req.body.entry[0].messaging[0].sender.id;
+	//var sender_id = req.body.entry[0].messaging[0].sender.id;
 	var text = req.body.entry[0].messaging[0].message.text;
 	// Send the text to wit.ai for processing
 
