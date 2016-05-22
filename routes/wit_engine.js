@@ -5,7 +5,7 @@ module.exports = function(text) {
         method: 'GET',
         json: {
             q : text,
-            access_token: 'S3X5IJC2Q5VC45Q6XFK326COB5673RLN'
+            access_token: 'BRWV5Z7ZQSEQZ4CTDSJ2HSFN5X6UCYSA'
         }
     }, function(error, response, body) {
         if (error) {
