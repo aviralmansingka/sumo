@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
 })
 
 // for facebook verification
-app.get('/webhook/', function (req, res) {
+app.get('/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === 'aviral_is_god') {
         res.send(req.query['hub.challenge'])
     }
