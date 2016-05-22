@@ -1,6 +1,8 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
+const Wit = require('node-wit').Wit
+var wit = require('./routes/wit_engine')
 var app = express()
 
 
@@ -32,20 +34,14 @@ app.post('/webhook', function (req, res) {
         if (event.message && event.message.text) {
             // safe to get text and
             text = event.message.text
-            if (text === 'Generic') {
-                sendGenericMessage(sender)
-                continue
-            }
-            sendTextMessage(sender,text.substring(0, 200))
-        }
-        if (event.postback) {
-            text = JSON.stringify(event.postback)
-            sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
-            continue
+            parseText(text);
+            
         }
     }
     res.status(200).send();
 })
+
+
 
 var token = 'EAAQoyn1s0fMBAKJZB9jJSLpfAEpuIIMPVwO3pwKwxcIjHrfvPYbJZB6ybu8FBx5aZCJcgiRp7srUsfxoaz58RuFAu8I3s1RcSwZCeaTHRdZBItg0AJZAyaxqZBZADqZAC6UZBSwMGWnhky5i3o54uMMlxPbQ5ZASKUhLYwffCpx1SrZAhAZDZD';
 function sendTextMessage(sender, text) {
