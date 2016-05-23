@@ -1,5 +1,5 @@
 var request = require('request');
-var post_request = require('post_request');
+var post_request = require('./sendText');
 module.exports = function(text) {
     request({
         url: 'https://api.wit.ai/message',

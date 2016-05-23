@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 var request = require('request')
 const Wit = require('node-wit').Wit
 var wit = require('./routes/wit_engine')
-var sendText = require('sendText')
+var sendText = require('./routes/sendText')
 var app = express()
 
 
@@ -71,6 +71,6 @@ function sendTextMessage(sender, text) {
 }
 
 // spin spin sugar
-app.listen((process.env.PORT || 5000), function() {
-    console.log('running on port', (process.env.PORT || 5000))
+app.listen((process.env.PORT || 3000), function() {
+    console.log('running on port', (process.env.PORT || 3000))
 })
