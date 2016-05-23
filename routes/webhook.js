@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var wit = require('./routes/wit_engine')
 // for facebook verification
 router.get('/', function (req, res) {
     if (req.query['hub.verify_token'] === 'aviral_is_god') {

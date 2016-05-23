@@ -2,7 +2,6 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
 const Wit = require('node-wit').Wit
-var wit = require('./routes/wit_engine')
 var sendText = require('./routes/sendText')
 var app = express()
 
@@ -19,8 +18,6 @@ app.use('/webhook', require('./routes/webhook'))
 app.get('/', function (req, res) {
     res.send('hello world i am a secret bot')
 })
-
-
 
 // spin spin sugar
 app.listen((process.env.PORT || 3000), function() {
